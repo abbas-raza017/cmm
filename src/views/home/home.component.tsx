@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, View } from "react-native";
+import { ScrollView, Text, View } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import { Category, Machine } from "../../models";
 import { MachineList } from "../machine/machine-list/machine-list.component";
@@ -41,10 +41,10 @@ export const Home = (): JSX.Element => {
   };
 
   return (
-    <View style={Styles.container}>
+    <ScrollView style={Styles.container}>
       {categories.length > 0 ? categories.map(renderCategoryGroup) : (
         <Text>No data available in the inventory.</Text>
       )}
-    </View>
+    </ScrollView>
   );
 };
