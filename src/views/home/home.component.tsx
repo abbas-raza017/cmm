@@ -1,7 +1,9 @@
 import React from "react";
-import { ScrollView, Text, View } from "react-native";
+import { Button, ScrollView, Text, View } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import { Category, Machine } from "../../models";
+import { addMachine } from "../../redux/machines";
+import { CreateGuid } from "../../utils";
 import { MachineList } from "../machine/machine-list/machine-list.component";
 import { MachineView } from "../machine/machine-view/machine-view.component";
 import { Styles } from "./home.styles";
@@ -19,12 +21,27 @@ export const Home = (): JSX.Element => {
     );
   };
 
+  const addMachineHandler = (categoryId: string): void => {
+    const newMachine: Machine = {
+      id: CreateGuid(),
+      categoryId: categoryId
+    };
+    dispatch(addMachine({
+      machine: newMachine
+    }));
+  };
+
   const renderCategoryGroup = (category: Category): JSX.Element => {
     return (
       <>
-        <Text style={Styles.categoryTitle}>
-          {category.title}
-        </Text>
+        <View style={Styles.titleContainer}>
+          <Text style={Styles.categoryTitle}>
+            {category.title}
+          </Text>
+          <Button title={`Add ${category.title}`} onPress={() => {
+            addMachineHandler(category.id);
+          }} />
+        </View>
         <View>
           {
             machines.map((machine: Machine) => {

@@ -7,5 +7,10 @@ export const Styles = StyleSheet.create({
   },
   categoryTitle: {
     fontSize: 30
+  },
+  titleContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginBottom: 10
   }
 });
