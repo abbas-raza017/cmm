@@ -77,3 +77,6 @@ buck-out/
 logs/
 report/
 builds/
+
+#expo
+.expo/*
